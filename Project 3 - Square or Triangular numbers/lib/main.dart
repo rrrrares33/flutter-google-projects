@@ -19,10 +19,10 @@ class NonePage extends StatefulWidget {
   const NonePage({Key? key}) : super(key: key);
 
   @override
-  _NonePageState createState() => _NonePageState();
+  NonePageState createState() => NonePageState();
 }
 
-class _NonePageState extends State<NonePage> {
+class NonePageState extends State<NonePage> {
   bool isSquare(int? number) {
     int i = 2;
     while (i * i <= number!) {
@@ -80,25 +80,25 @@ class _NonePageState extends State<NonePage> {
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          int? numberEntered = int.tryParse(controllerValueInput.text);
+          final int? numberEntered = int.tryParse(controllerValueInput.text);
           if (numberEntered == null) {
             controllerValueInput.clear();
           } else {
-            bool square = isSquare(numberEntered);
-            bool triangular = isTriangular(numberEntered);
-            String text = "";
+            final bool square = isSquare(numberEntered);
+            final bool triangular = isTriangular(numberEntered);
+            String text = '';
 
             if (square && triangular) {
-              text = "The number " + numberEntered.toString() + " is both SQUARE and TRIANGULAR!";
+              text = 'The number $numberEntered is both SQUARE and TRIANGULAR!';
             } else if (square) {
-              text = "The number " + numberEntered.toString() + " is SQUARE!";
+              text = 'The number $numberEntered is SQUARE';
             } else if (triangular) {
-              text = "The number " + numberEntered.toString() + " is TRIANGULAR!";
+              text = 'The number $numberEntered is TRIANGULAR!';
             } else {
-              text = "The number " + numberEntered.toString() + " is neither square nor triangular.";
+              text = 'The number $numberEntered is neither square nor triangular.';
             }
 
-            showDialog(
+            showDialog<int>(
                 context: context,
                 builder: (BuildContext context) => SimpleDialog(
                       title: Text(

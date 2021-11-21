@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class App extends StatelessWidget {
@@ -18,16 +18,16 @@ class NonePage extends StatefulWidget {
   const NonePage({Key? key}) : super(key: key);
 
   @override
-  _NonePageState createState() => _NonePageState();
+  NonePageState createState() => NonePageState();
 }
 
-class _NonePageState extends State<NonePage> {
+class NonePageState extends State<NonePage> {
   // Controller for TextField.
   final TextEditingController controllerValueInput = TextEditingController();
 
   // The text that appears on the button.
   // First time it will be "Guess", later it may change to "Try again".
-  String buttonText = "Guess";
+  String buttonText = 'Guess';
 
   // The number which needs to be guessed by the user. (random between 1 and 100)
   int? numberToBeGuessed = Random().nextInt(99) + 1;
@@ -41,7 +41,7 @@ class _NonePageState extends State<NonePage> {
 
   // The text which remembers the user his last guess and if the number is
   // bigger or smaller.
-  String usersLastGuess = "";
+  String usersLastGuess = '';
 
   // The text field is empty (no error but still unable to press anything)
   bool textFieldIsEmpty = true;
@@ -92,7 +92,7 @@ class _NonePageState extends State<NonePage> {
             margin: const EdgeInsetsDirectional.all(5),
             // This way, the padding between the above and bellow children
             // Will not be displayed until the text is displayed.
-            child: usersLastGuess != ""
+            child: usersLastGuess != ''
                 ? Text(
                     usersLastGuess,
                     textAlign: TextAlign.center,
@@ -105,7 +105,6 @@ class _NonePageState extends State<NonePage> {
           // In front of the screen.
           Card(
             margin: const EdgeInsetsDirectional.all(15),
-            borderOnForeground: true,
             elevation: 7.5,
             child: Column(
               children: <Widget>[
@@ -113,7 +112,7 @@ class _NonePageState extends State<NonePage> {
                   margin: const EdgeInsetsDirectional.all(5),
                   transformAlignment: AlignmentDirectional.center,
                   child: const Text(
-                    " Try a number! ",
+                    ' Try a number! ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 27,
@@ -129,8 +128,8 @@ class _NonePageState extends State<NonePage> {
                   transformAlignment: AlignmentDirectional.center,
                   child: Text(
                     (numberOfGuesses == 1)
-                        ? "--- " + numberOfGuesses.toString() + " guess made---"
-                        : "--- " + numberOfGuesses.toString() + " guesses made---",
+                        ? '--- $numberOfGuesses guess made---'
+                        : '--- $numberOfGuesses guesses made---',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 20,
@@ -150,30 +149,30 @@ class _NonePageState extends State<NonePage> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       controller: controllerValueInput,
-                      readOnly: buttonText == "Reset",
+                      readOnly: buttonText == 'Reset',
                       decoration: InputDecoration(
-                        hintText: (buttonText == 'Guess') ? "Enter your guess here..." : "",
+                        hintText: (buttonText == 'Guess') ? 'Enter your guess here...' : '',
                         errorText: inputErrorMessage,
                       ),
                       onChanged: (String? value) {
-                        if (controllerValueInput.text == "") {
+                        if (controllerValueInput.text == '') {
                           inputErrorMessage = null;
                           textFieldIsEmpty = true;
                         } else {
-                          var inputInField = int.tryParse(controllerValueInput.text);
+                          final int? inputInField = int.tryParse(controllerValueInput.text);
                           setState(() {
                             if (inputInField != null) {
                               if (inputInField >= 100) {
-                                inputErrorMessage = "The guess must be smaller then 100.";
+                                inputErrorMessage = 'The guess must be smaller then 100.';
                               } else if (inputInField <= 0) {
-                                inputErrorMessage = "The guess must be bigger then 0.";
+                                inputErrorMessage = 'The guess must be bigger then 0.';
                               } else {
                                 textFieldIsEmpty = false;
                                 numberAttempted = inputInField;
                                 inputErrorMessage = null;
                               }
                             } else {
-                              inputErrorMessage = "Input is not convertible to int.";
+                              inputErrorMessage = 'Input is not convertible to int.';
                             }
                           });
                         }
@@ -189,23 +188,23 @@ class _NonePageState extends State<NonePage> {
                       backgroundColor: MaterialStateProperty.all(Colors.grey.shade300),
                     ),
                     onPressed: () {
-                      if (buttonText != "Reset") {
+                      if (buttonText != 'Reset') {
                         setState(() {
                           if (textFieldIsEmpty || inputErrorMessage != null) {
                           } else {
                             if (numberAttempted! < numberToBeGuessed!) {
-                              usersLastGuess = "You tried " + numberAttempted.toString() + ' ! \n Try higher!';
+                              usersLastGuess = 'You tried $numberAttempted ! \n Try higher!';
                               numberOfGuesses++;
                             } else if (numberAttempted! > numberToBeGuessed!) {
-                              usersLastGuess = "You tried " + numberAttempted.toString() + ' ! \n Try smaller!';
+                              usersLastGuess = 'You tried $numberAttempted ! \n Try smaller!';
                               numberOfGuesses++;
                             } else {
                               numberOfGuesses++;
                               // numberToBeGuessed gets changed before it is displayed so
                               // I decided to save it into a new variable, in order to display it.
-                              var auxOfGuessedNumber = numberToBeGuessed;
-                              var auxOfNumberOfGuesses = numberOfGuesses;
-                              showDialog(
+                              final int? auxOfGuessedNumber = numberToBeGuessed;
+                              final int auxOfNumberOfGuesses = numberOfGuesses;
+                              showDialog<int>(
                                   context: context,
                                   builder: (BuildContext context) => AlertDialog(
                                         title: const Text(
@@ -215,13 +214,7 @@ class _NonePageState extends State<NonePage> {
                                           ),
                                         ),
                                         content: Text(
-                                          'You picked the correct number: ' +
-                                              (auxOfGuessedNumber!).toString() +
-                                              '\n' +
-                                              'It took you exactly ' +
-                                              auxOfNumberOfGuesses.toString() +
-                                              ' attempts.\n' +
-                                              'Do you want to play again?',
+                                          'You picked the correct number: ${auxOfGuessedNumber!}\nIt took you exactly $auxOfNumberOfGuesses attempts.\nDo you want to play again?',
                                           style: const TextStyle(
                                             fontSize: 15,
                                           ),
@@ -255,7 +248,7 @@ class _NonePageState extends State<NonePage> {
                                           ),
                                         ],
                                       ));
-                              usersLastGuess = "";
+                              usersLastGuess = '';
                               numberToBeGuessed = Random().nextInt(99) + 1;
                               numberAttempted = null;
                               numberOfGuesses = 0;
@@ -267,9 +260,9 @@ class _NonePageState extends State<NonePage> {
                       } else {
                         setState(() {
                           numberOfGuesses = 0;
-                          usersLastGuess = "";
+                          usersLastGuess = '';
                           numberToBeGuessed = Random().nextInt(99) + 1;
-                          buttonText = "Guess";
+                          buttonText = 'Guess';
                           numberAttempted = null;
                           controllerValueInput.clear();
                           textFieldIsEmpty = true;

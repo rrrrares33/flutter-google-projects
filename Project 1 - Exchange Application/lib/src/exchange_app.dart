@@ -15,12 +15,12 @@ class NonePage extends StatefulWidget {
   const NonePage({Key? key}) : super(key: key);
 
   @override
-  _NonePageState createState() => _NonePageState();
+  NonePageState createState() => NonePageState();
 }
 
 // variable: [type][name][=][value]
 // function: [return type][name][parameters]
-class _NonePageState extends State<NonePage> {
+class NonePageState extends State<NonePage> {
   // Controller for TextField.
   final TextEditingController controllerValueInput = TextEditingController();
   final double exchangeRateEuroToRon = 4.94; // as of 07.11.2021
@@ -29,7 +29,7 @@ class _NonePageState extends State<NonePage> {
   // The value (as double) extracted from the input.
   double? doubleValue;
   // The result of conversion. If there is no result, no conversion has been made.
-  String convertedValue = "";
+  String convertedValue = '';
   // The dropdown option selected. By default, it is 0 (EUR to RON).
   int dropDownOptionSelected = 0;
 
@@ -40,7 +40,7 @@ class _NonePageState extends State<NonePage> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Currency convertor",
+          'Currency convertor',
         ),
       ),
       // The rest of the screen.
@@ -52,7 +52,7 @@ class _NonePageState extends State<NonePage> {
           Container(
             margin: const EdgeInsetsDirectional.all(16.4),
             child: TextField(
-              keyboardType: const TextInputType.numberWithOptions(),
+              keyboardType: TextInputType.number,
               controller: controllerValueInput,
               decoration: InputDecoration(
                 hintText: 'Enter the amount to convert.',
@@ -65,7 +65,7 @@ class _NonePageState extends State<NonePage> {
                       controllerValueInput.clear();
                       FocusScope.of(context).requestFocus(FocusNode());
                       setState(() {
-                        convertedValue = "";
+                        convertedValue = '';
                         errorText = null;
                       });
                     }),
@@ -94,11 +94,11 @@ class _NonePageState extends State<NonePage> {
             items: const <DropdownMenuItem<int>>[
               DropdownMenuItem<int>(
                 value: 0,
-                child: Text("EUR to RON"),
+                child: Text('EUR to RON'),
               ),
               DropdownMenuItem<int>(
                 value: 1,
-                child: Text("RON to EUR"),
+                child: Text('RON to EUR'),
               ),
             ],
             value: dropDownOptionSelected,
@@ -116,8 +116,8 @@ class _NonePageState extends State<NonePage> {
                 FocusScope.of(context).requestFocus(FocusNode());
                 setState(() {
                   if (controllerValueInput.text.isEmpty || errorText != null) {
-                    convertedValue = "";
-                    errorText = "Please enter a valid number.";
+                    convertedValue = '';
+                    errorText = 'Please enter a valid number.';
                   } else {
                     if (dropDownOptionSelected == 0) {
                       convertedValue = (doubleValue! * exchangeRateEuroToRon).toStringAsFixed(2);
@@ -132,7 +132,7 @@ class _NonePageState extends State<NonePage> {
                 padding: MaterialStateProperty.all(const EdgeInsetsDirectional.all(15)),
               ),
               child: const Text(
-                "CONVERT !",
+                'CONVERT !',
                 style: TextStyle(
                   color: Color.fromARGB(255, 0, 0, 0),
                   fontSize: 16.0,
