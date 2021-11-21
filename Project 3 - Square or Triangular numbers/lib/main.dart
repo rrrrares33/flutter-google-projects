@@ -89,18 +89,13 @@ class _NonePageState extends State<NonePage> {
             String text = "";
 
             if (square && triangular) {
-              text = "The number " +
-                  numberEntered.toString() +
-                  " is both SQUARE and TRIANGULAR!";
+              text = "The number " + numberEntered.toString() + " is both SQUARE and TRIANGULAR!";
             } else if (square) {
               text = "The number " + numberEntered.toString() + " is SQUARE!";
             } else if (triangular) {
-              text =
-                  "The number " + numberEntered.toString() + " is TRIANGULAR!";
+              text = "The number " + numberEntered.toString() + " is TRIANGULAR!";
             } else {
-              text = "The number " +
-                  numberEntered.toString() +
-                  " is neither square nor triangular.";
+              text = "The number " + numberEntered.toString() + " is neither square nor triangular.";
             }
 
             showDialog(

@@ -120,19 +120,16 @@ class _NonePageState extends State<NonePage> {
                     errorText = "Please enter a valid number.";
                   } else {
                     if (dropDownOptionSelected == 0) {
-                      convertedValue = (doubleValue! * exchangeRateEuroToRon)
-                          .toStringAsFixed(2);
+                      convertedValue = (doubleValue! * exchangeRateEuroToRon).toStringAsFixed(2);
                     } else {
-                      convertedValue = (doubleValue! / exchangeRateEuroToRon)
-                          .toStringAsFixed(2);
+                      convertedValue = (doubleValue! / exchangeRateEuroToRon).toStringAsFixed(2);
                     }
                   }
                 });
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
-                padding: MaterialStateProperty.all(
-                    const EdgeInsetsDirectional.all(15)),
+                padding: MaterialStateProperty.all(const EdgeInsetsDirectional.all(15)),
               ),
               child: const Text(
                 "CONVERT !",

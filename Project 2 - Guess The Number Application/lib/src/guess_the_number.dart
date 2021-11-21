@@ -97,10 +97,7 @@ class _NonePageState extends State<NonePage> {
                     usersLastGuess,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.blueGrey),
+                        fontSize: 40, fontWeight: FontWeight.w400, fontStyle: FontStyle.italic, color: Colors.blueGrey),
                   )
                 : Container(),
           ),
@@ -133,9 +130,7 @@ class _NonePageState extends State<NonePage> {
                   child: Text(
                     (numberOfGuesses == 1)
                         ? "--- " + numberOfGuesses.toString() + " guess made---"
-                        : "--- " +
-                            numberOfGuesses.toString() +
-                            " guesses made---",
+                        : "--- " + numberOfGuesses.toString() + " guesses made---",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 20,
@@ -157,9 +152,7 @@ class _NonePageState extends State<NonePage> {
                       controller: controllerValueInput,
                       readOnly: buttonText == "Reset",
                       decoration: InputDecoration(
-                        hintText: (buttonText == 'Guess')
-                            ? "Enter your guess here..."
-                            : "",
+                        hintText: (buttonText == 'Guess') ? "Enter your guess here..." : "",
                         errorText: inputErrorMessage,
                       ),
                       onChanged: (String? value) {
@@ -167,24 +160,20 @@ class _NonePageState extends State<NonePage> {
                           inputErrorMessage = null;
                           textFieldIsEmpty = true;
                         } else {
-                          var inputInField =
-                              int.tryParse(controllerValueInput.text);
+                          var inputInField = int.tryParse(controllerValueInput.text);
                           setState(() {
                             if (inputInField != null) {
                               if (inputInField >= 100) {
-                                inputErrorMessage =
-                                    "The guess must be smaller then 100.";
+                                inputErrorMessage = "The guess must be smaller then 100.";
                               } else if (inputInField <= 0) {
-                                inputErrorMessage =
-                                    "The guess must be bigger then 0.";
+                                inputErrorMessage = "The guess must be bigger then 0.";
                               } else {
                                 textFieldIsEmpty = false;
                                 numberAttempted = inputInField;
                                 inputErrorMessage = null;
                               }
                             } else {
-                              inputErrorMessage =
-                                  "Input is not convertible to int.";
+                              inputErrorMessage = "Input is not convertible to int.";
                             }
                           });
                         }
@@ -197,8 +186,7 @@ class _NonePageState extends State<NonePage> {
                 //    incrementing the nrOfAttempts
                 ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.grey.shade300),
+                      backgroundColor: MaterialStateProperty.all(Colors.grey.shade300),
                     ),
                     onPressed: () {
                       if (buttonText != "Reset") {
@@ -206,14 +194,10 @@ class _NonePageState extends State<NonePage> {
                           if (textFieldIsEmpty || inputErrorMessage != null) {
                           } else {
                             if (numberAttempted! < numberToBeGuessed!) {
-                              usersLastGuess = "You tried " +
-                                  numberAttempted.toString() +
-                                  ' ! \n Try higher!';
+                              usersLastGuess = "You tried " + numberAttempted.toString() + ' ! \n Try higher!';
                               numberOfGuesses++;
                             } else if (numberAttempted! > numberToBeGuessed!) {
-                              usersLastGuess = "You tried " +
-                                  numberAttempted.toString() +
-                                  ' ! \n Try smaller!';
+                              usersLastGuess = "You tried " + numberAttempted.toString() + ' ! \n Try smaller!';
                               numberOfGuesses++;
                             } else {
                               numberOfGuesses++;
@@ -223,8 +207,7 @@ class _NonePageState extends State<NonePage> {
                               var auxOfNumberOfGuesses = numberOfGuesses;
                               showDialog(
                                   context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
+                                  builder: (BuildContext context) => AlertDialog(
                                         title: const Text(
                                           '!! Congratulations !!',
                                           style: TextStyle(
@@ -247,8 +230,7 @@ class _NonePageState extends State<NonePage> {
                                           TextButton(
                                             onPressed: () {
                                               setState(() {
-                                                Navigator.pop(
-                                                    context, 'Cancel');
+                                                Navigator.pop(context, 'Cancel');
                                                 // Here I change the button text to 'Reset'
                                                 // If the player wants to continue, he needs
                                                 // to press on it before playing again.
@@ -257,8 +239,7 @@ class _NonePageState extends State<NonePage> {
                                             },
                                             child: const Text(
                                               'Cancel',
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                              style: TextStyle(color: Colors.black),
                                             ),
                                           ),
                                           TextButton(
@@ -269,8 +250,7 @@ class _NonePageState extends State<NonePage> {
                                             },
                                             child: const Text(
                                               'Reset',
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                              style: TextStyle(color: Colors.black),
                                             ),
                                           ),
                                         ],
