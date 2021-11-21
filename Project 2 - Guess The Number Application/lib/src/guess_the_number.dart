@@ -133,7 +133,9 @@ class _NonePageState extends State<NonePage> {
                   child: Text(
                     (numberOfGuesses == 1)
                         ? "--- " + numberOfGuesses.toString() + " guess made---"
-                        : "--- " + numberOfGuesses.toString() + " guesses made---",
+                        : "--- " +
+                            numberOfGuesses.toString() +
+                            " guesses made---",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 20,

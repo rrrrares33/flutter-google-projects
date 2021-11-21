@@ -47,10 +47,7 @@ class _NonePageState extends State<NonePage> {
       body: Column(
         children: <Widget>[
           // The image with euros in it.
-          Image.asset(
-              'assets/euro_image.png',
-              height: 200
-          ),
+          Image.asset('assets/euro_image.png', height: 200),
           // Text field for input.
           Container(
             margin: const EdgeInsetsDirectional.all(16.4),
@@ -71,8 +68,7 @@ class _NonePageState extends State<NonePage> {
                         convertedValue = "";
                         errorText = null;
                       });
-                    }
-                ),
+                    }),
               ),
               onChanged: (String value) {
                 final double? auxDoubleValue = double.tryParse(value);
@@ -83,8 +79,7 @@ class _NonePageState extends State<NonePage> {
                   setState(() {
                     errorText = 'Please enter a correct value.';
                   });
-                }
-                else {
+                } else {
                   setState(() {
                     doubleValue = auxDoubleValue;
                     errorText = null;
@@ -114,9 +109,9 @@ class _NonePageState extends State<NonePage> {
             },
           ),
           ElevatedButton(
-            // When this button is pressed, it takes the value from doubleValue
-            // (if there is no error)
-            // And converts it according to the Dropdown selection.
+              // When this button is pressed, it takes the value from doubleValue
+              // (if there is no error)
+              // And converts it according to the Dropdown selection.
               onPressed: () {
                 FocusScope.of(context).requestFocus(FocusNode());
                 setState(() {
@@ -136,7 +131,8 @@ class _NonePageState extends State<NonePage> {
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
-                padding: MaterialStateProperty.all(const EdgeInsetsDirectional.all(15)),
+                padding: MaterialStateProperty.all(
+                    const EdgeInsetsDirectional.all(15)),
               ),
               child: const Text(
                 "CONVERT !",
@@ -144,8 +140,7 @@ class _NonePageState extends State<NonePage> {
                   color: Color.fromARGB(255, 0, 0, 0),
                   fontSize: 16.0,
                 ),
-              )
-          ),
+              )),
           Container(
             // The widget which displays the result of the conversion.
             margin: const EdgeInsetsDirectional.all(5),
