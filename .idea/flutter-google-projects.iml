@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/Project 4 - Play sounds/play_sounds/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 4 - Play sounds/play_sounds/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 4 - Play sounds/play_sounds/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 2 - Guess The Number Application/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 2 - Guess The Number Application/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 2 - Guess The Number Application/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 3 - Square or Triangular numbers/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 3 - Square or Triangular numbers/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 3 - Square or Triangular numbers/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 1 - Exchange Application/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 1 - Exchange Application/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Project 1 - Exchange Application/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
